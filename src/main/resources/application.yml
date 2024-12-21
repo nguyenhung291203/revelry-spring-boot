@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+  web:
+    resources:
+      add-mappings: false
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3308/revelry-database
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+integration:
+  minio:
+    secret-key: admin@2024
+    url: http://localhost:9000
+    access-key: admin
+
+app:
+  jwt-secret: daf66e01593f61a15b857cf433aae03a005812b31234e149036bcc8dee755dbb
+  jwt-expiration-milliseconds: 10800000
+  jwt-expiration-refresh-token: 14400000
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+redis:
+  host: localhost
+  port: 6380
