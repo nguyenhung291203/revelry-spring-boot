@@ -12,12 +12,13 @@ services:
 
   redis:
     image: redis:7
-    container_name: redis_container
+    container_name: redis
     restart: always
     ports:
       - "6380:6379"
     volumes:
       - redis_data:/data
+    command: ["redis-server", "--requirepass", "123456"]
 
   minio:
     image: bitnami/minio:latest
@@ -32,8 +33,6 @@ services:
       - '9000:9000'
       - '9001:9001'
     command: minio server /bitnami/minio/data --console-address ":9001"
-
-
 
 volumes:
   mysql_data:
